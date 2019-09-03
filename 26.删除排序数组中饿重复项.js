@@ -2,6 +2,8 @@
  * @param {number[]} nums
  * @return {number}
  */
+
+ //方法一：用splice内存消耗大，效率慢
 // var removeDuplicates = function(nums) {
 //     for(let i=1;i<nums.length;i++){
 //         if(nums[i]===nums[i-1]){
@@ -11,6 +13,8 @@
 //     }
 //     return nums.length
 // };
+
+//方法二：双指针
 var removeDuplicates = function(nums) {
     let i=0
     for(let j=1;j<nums.length;j++){
