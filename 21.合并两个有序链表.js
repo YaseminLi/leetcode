@@ -27,22 +27,13 @@ var mergeTwoLists = function (l1, l2) {
     let current = null
     while (l1 || l2) {
         let min = ''
-        if (!l1) {
-            min = l2
-            l2 = l2.next
-        } else if (!l2) {
+        if (!l2 || (l1 && l1.val <= l2.val)) {
             min = l1
             l1 = l1.next
         } else {
-            if (l1.val <= l2.val) {
-                min = l1
-                l1 = l1.next
-            } else {
-                min = l2
-                l2 = l2.next
-            }
+            min = l2
+            l2 = l2.next
         }
-
         if (list === null) {
             list = new ListNode(min.val)
             current = list
