@@ -15,7 +15,7 @@ var searchInsert = function(nums, target) {
         return r+1
     }
     if(r===0){
-            return 
+            return 1
     }
     //在nums[l……r]的范围内查找
     while(l<r){
