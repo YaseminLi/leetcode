@@ -45,19 +45,41 @@
 // console.log(indexArr);
 
 //hash表
-let twoSum=function (nums,target) {
-    let numsObj={}
-    for(let i=0;i<nums.length;i++){
-        let current=nums[i]
-        let match=target-current 
-        if(match in numsObj){
-            return [i,numsObj[match]]
-        }else{
-            numsObj[current]=i
-        }
-    }
-}
-let nums = [2, 7, 11, 15]
-let target = 9
+// let twoSum=function (nums,target) {
+//     let numsObj={}
+//     for(let i=0;i<nums.length;i++){
+//         let current=nums[i]
+//         let match=target-current 
+//         if(match in numsObj){
+//             return [i,numsObj[match]]
+//         }else{
+//             numsObj[current]=i
+//         }
+//     }
+// }
+//双指针 nono
+// let twoSum = function (nums, target) {
+//     let len = nums.length
+//     let arr=[].concat(nums)
+//     arr.sort((a, b) => a - b)
+//     let l = 0
+//     let r = len - 1
+//     while (l < r) {
+//         let sum = arr[l] + arr[r]
+//         if (sum === target) {
+//             let lIndex=nums.findIndex(value=>value===arr[l])
+//             let rIndex=nums.findIndex(value=>value===arr[r])
+//             return [lIndex,rIndex]
+//         }
+//         if (sum < target) {
+//             ++l
+//         }
+//         if (sum > target) {
+//             --r
+//         }
+//     }
+// }
+let nums = [3,2,4]
+let target = 6
 let indexArr = twoSum(nums, target)
 console.log(indexArr);
