@@ -33,7 +33,7 @@ var rob = function(root) {
     }
     dfs(root)
     return Math.max(f.get(root)||0,g.get(root)||0)
-}; //112ms 441.mb 时间n 递归n 哈希映射n
+}; //112ms 441.mb 后序遍历，时间n 递归n 哈希映射n
 
 // 优化,不用哈希存储了，直接将左右孩子的值返回给上一个节点
 var rob = function(root) {
@@ -49,4 +49,4 @@ var rob = function(root) {
     }
     const result=dfs(root)
     return Math.max(result[0],result[1])
-};
+};// 后序遍历，时间n，递归n
