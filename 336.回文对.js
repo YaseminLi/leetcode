@@ -84,7 +84,7 @@ var palindromePairs = function (words) {
     }
 
     return [...set].map(item => item.split(','))
-} // 268ms 49.1M 超快了！！
+} // 268ms 49.1M 超快了吧！！
 
 const cases = [
     {
