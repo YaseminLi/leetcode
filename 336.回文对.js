@@ -43,73 +43,75 @@ var palindromePairs = function (words) {
 }; // 3796ms 50.2M
 
 
+// 用map存储回文数据：遍历words每一项，将翻转存入key,索引i为value
+// 将每个单词拆分成左右两部分，寻找其中的回文串，看在map中是否存在
 var palindromePairs = function (words) {
-    // 用Map存每个字符串的翻转
+    //用map存字符串的翻转
     const map = new Map()
     // 用Set存回文对的索引，以避免重复
     const set = new Set()
-    // map的key为字符串的翻转，value为字符串的索引
-    words.forEach((word, i) => {
-        map.set(word.split('').reverse().join(''), i)
-    })
+    words.forEach((word, i) => map.set(word.split('').reverse().join(''), i))
     for (let i = 0; i < words.length; i++) {
-        const word = words[i]
-        for (let j = 0; j <= word.length; j++) {
-            // 将字符串分为左右两个字串
-            const left = word.slice(0, j), right = word.slice(j)
-            // 如果左字符串是回文的
-            if (isPalindrom(left)) {
-                // 如果map里存有右字符串且索引不是i（题目写着要不同的索引对）
-                if (map.has(right) && map.get(right) !== i) {
-                    // 满足前面条件的字符串为  右字符串的翻转 + 本身是回文的左字符串 + 右字符串
-                    // 这是一个回文字符串，其索引对为[map.get(right),i]
-                    // 因为数组没办法去重，所以用字符串表示并存入set
-                    const temp = `${map.get(right)},${i}`
-                    set.add(temp)
-                }
+        // 单词为空的情况
+        for (let j = 0; j <= words[i].length; j++) {
+            //  将单词拆分成左右两部分
+            const l = words[i].slice(0, j)
+            const r = words[i].slice(j)
+
+            //左边是回文串时,找右半部分是否存在于map中
+            if (isPalindrome(l) && map.has(r) && map.get(r) !== i) {
+                // set.add([map.get(r), i]) add数组无法检查到重复情况，转换成字符串
+                const temp = `${map.get(r)},${i}`
+                set.add(temp)
             }
-            // 如果右字符串是回文的
-            if (isPalindrom(right)) {
-                // 如果map里存有左字符串且索引不是i（题目写着要不同的索引对） 
-                if (map.has(left) && map.get(left) !== i) {
-                    // 满足前面条件的字符串为  左字符串 + 本身是回文的右字符串 + 左字符串的翻转
-                    const temp = `${i},${map.get(left)}`
-                    set.add(temp)
-                }
+
+            //右边是回文串时,左半部分是否存在于map中
+            if (isPalindrome(r) && map.has(l) && map.get(l) !== i) {
+                const temp = `${i},${map.get(l)}` //不要搞反了顺序啊
+                set.add(temp)
             }
         }
     }
-    // 将set中表示索引对的字符串转化为数组存到ans里
-    const ans = [...set].map(v => v.split(','))
-    return ans
-}
-// 判断是否是回文字符串
-function isPalindrom (str) {
-    let i = 0, j = str.length - 1
-    while (i < j) {
-        if (str[i] !== str[j]) {
-            return false
+    // 判断是否是回文字符串
+    function isPalindrome (string) {
+        const len = string.length
+        for (let i = 0, j = len - 1; i < j; i++, j--) {
+            if (string[i] !== string[j]) {
+                return false
+            }
         }
-        i++
-        j--
+        return true
     }
-    return true
-}
 
-// var palindromePairs=function(words){
-
-// }
+    return [...set].map(item => item.split(','))
+} // 268ms 49.1M 超快了！！
 
 const cases = [
     {
+        data: ["a", ''],
+        expect: [
+            [0, 1],
+            [1, 0],
+        ],
+    },
+    {
         data: ["abcd", "dcba", "lls", "s", "sssll"],
-        expect: [[0, 1], [1, 0], [3, 2], [2, 4]],
+        expect: [
+            [0, 1],
+            [1, 0],
+            [3, 2],
+            [2, 4]
+        ],
     },
     {
         data: ["bat", "tab", "cat"],
-        expect: [[0, 1], [1, 0]],
+        expect: [
+            [0, 1],
+            [1, 0]
+        ],
     },
 ];
+
 function unitTest () {
     for (let ca of cases) {
         try {
