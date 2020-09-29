@@ -8,25 +8,25 @@
 链接：https://leetcode-cn.com/problems/fizz-buzz
  */
 
- //比求余快
+//比求余快
 var fizzBuzz = function (n) {
     let arr = []
     let i = 1;
     let j = 1
     let k = 1
-    for (i, j, k; i < n + 1; i++ , j++ , k++) {
-        let item =''
-        if(j===3||k===5){
-            if(j===3){
-                item="Fizz"
-                j=0
+    for (i, j, k; i < n + 1; i++, j++, k++) {
+        let item = ''
+        if (j === 3 || k === 5) {
+            if (j === 3) {
+                item = "Fizz"
+                j = 0
             }
-            if(k===5){
-                item+="Buzz"
-                k=0
+            if (k === 5) {
+                item += "Buzz"
+                k = 0
             }
-        }else{
-            item=i+''
+        } else {
+            item = i + ''
         }
         // if (j === 3 && k !== 5) {
         //     item = "Fizz"
@@ -63,3 +63,17 @@ var fizzBuzz = function (n) {
 //     return arr
 // };
 console.log(fizzBuzz(15));
+
+function People() {
+    var name = '小明'
+    this.changeName = function (newName) {
+        name = newName
+    }
+    this.sayHello = function () {
+        console.log(name)
+    }
+}
+let xiaoming = new People()
+console.log(xiaoming.name)//undefined,name属性不是实例属性
+xiaoming.changeName('dahong')
+xiaoming.sayHello()//'dahong
