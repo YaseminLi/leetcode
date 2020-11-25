@@ -1,0 +1,8 @@
+post https://srm-test.want-want.com/srm/statement/getStatementListByCondition?pageSize=10&pageNum=1
+content-type: application/json
+
+{
+"factoryIds": "C811,FA12,FB82,FC22,S221",
+"isSupplier": 1,
+"stateIds": "A,B,C,D",
+}
