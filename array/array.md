@@ -1,11 +1,24 @@
 ### 数组类相关问题总结
+1. 对数组的操作
+2. 滑动指针
 1. 堆
 2. 对撞指针
 3. 滑动窗口
 
+1. 对数组的操作
+数组中的元素在内存中连续存储。
+
+- 读取元素。先找到索引0的内存地址，再加上索引值读取目标元素，时间复杂度o(1)
+- 查找元素。先找到索引0的内存地址，从头至尾遍历每个元素，与目标元素相同时停止查找，时间复杂度o(n)
+- 插入和删除元素。插入前需腾出空间(链表可以解决？ming)，删除后需要对空缺位置填补，时间复杂度o(n)
+
+2. 滑动指针
+只需要一个指针，当前指针元素满足条件，或者指针将数组分成左右两部分后满足条件
+- [find-pivot-index](https://leetcode-cn.com/problems/find-pivot-index/)
 
 1. 堆
 - [kth-largest-element-in-an-array](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+
 
 2. 对撞指针
 
