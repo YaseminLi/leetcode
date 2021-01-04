@@ -1,6 +1,7 @@
 ### 数组类相关问题总结
 1. 对数组的操作
 2. 滑动指针
+3. 二分法
 1. 堆
 2. 对撞指针
 3. 滑动窗口
@@ -15,6 +16,11 @@
 2. 滑动指针
 只需要一个指针，当前指针元素满足条件，或者指针将数组分成左右两部分后满足条件
 - [find-pivot-index](https://leetcode-cn.com/problems/find-pivot-index/)
+
+3. 二分法
+对于一个排序数组，可以采用二分法，通过与中间值的比较判断在哪个区域。
+- [search-insert-position](https://leetcode-cn.com/problems/search-insert-position/
+
 
 1. 堆
 - [kth-largest-element-in-an-array](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
@@ -33,3 +39,7 @@
 涉及到**连续子数组**的问题，根据条件变动左右边界，相当于一个滑块在数组上滑动，直到将数组遍历结束。
 
 - [长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum/)
+
+
+待分类
+- [合并区间](https://leetcode-cn.com/problems/merge-intervals/)
