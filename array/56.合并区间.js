@@ -33,3 +33,9 @@ console.log(merge([[1,3],[2,6],[8,10],[15,18]]));
 console.log(merge([]));
 console.log(merge([[1,4],[0,0]]));
 console.log(merge([[2,3],[4,5],[6,7],[8,9],[1,10]]));
+
+// 通用测试方法
+
+function test(func,expRes) {
+  
+}
