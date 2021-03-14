@@ -13,16 +13,25 @@
  * @return {number}
  *
 */
-// 通过数组arr来存放需计算的数据，默认都在arr[0]中
-// + - 数字识别计算
-// s[i]===( 将s[i]与arr[arr.length]计算，并放在arr[arr.length]中
-// s[i]===) 将arr[arr.length-1]与前一项计算
  var calculate = function(s) {
-   s=s.replace(/\s/g,'')
-   let result=0
-   const arr=[]
-   for(let i=0;i<s.length;i+=1){
-     
+   let ret=0
+   const len=s.length
+   let sign=1
+   for(let i=0;i<len;i++){
+     if(!s[i]){
+       continue
+     }else if(s[i]==='+'){
+       sign=1
+     }else if(s[i]==='-'){
+      sign=-1
+    }else if(!isNaN(Number(s[i]))){
+       let sum=0
+       while(i<len){
+        sum=sum*10+Number(s[i])
+        i++
+       }
+       ret+=sum
+     }
    }
 
 };
