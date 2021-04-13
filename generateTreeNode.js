@@ -35,12 +35,12 @@ class BST{
   }
 }
 
-// const bst = new BST();
-// bst.insert(13);
-// bst.insert(21);
-// bst.insert(15);
-// bst.insert(29);
-// bst.insert(3);
+const bst = new BST();
+bst.insert(13);
+bst.insert(21);
+bst.insert(15);
+bst.insert(29);
+bst.insert(3);
 
 module.exports= {BST}
 
