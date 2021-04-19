@@ -36,20 +36,48 @@ nums2 = [2,5,6],       n = 3
 // };
 
 // 从后往前移动双指针，将大的元素从尾部往前放入nums1中
-var merge = function (nums1, m, nums2, n){
-    let index1 = m - 1;
-    let index2 = n - 1;
-    let tail = m + n - 1;
+// var merge = function (nums1, m, nums2, n){
+//     let index1 = m - 1;
+//     let index2 = n - 1;
+//     let tail = m + n - 1;
 
-    while (index1 >= 0 && index2 >= 0) {
-        if (nums1[index1] > nums2[index2]) {
-            nums1[tail] = nums1[index1];
-            index1--;
-        } else {
-            nums1[tail] = nums2[index2];
-            index2--;
+//     while (index1 >= 0 && index2 >= 0) {
+//         if (nums1[index1] > nums2[index2]) {
+//             nums1[tail] = nums1[index1];
+//             index1--;
+//         } else {
+//             nums1[tail] = nums2[index2];
+//             index2--;
+//         }
+//         tail--;
+//     }
+//     while (tail >= 0 && index1 >= 0) {
+//         nums1[tail] = nums1[index1];
+//         index1--;
+//         tail--;
+//     }
+//     while (tail >= 0 && index2 >= 0) {
+//         nums1[tail] = nums2[index2];
+//         index2--;
+//         tail--;
+//     }
+//   return nums1
+// }
+
+var merge = function(nums1, m, nums2, n) {
+    let tail=m+n-1
+    let index1=m-1
+    let index2=n-1
+
+    while(tail>=0&&index1>=0&&index2>=0){
+        if(nums1[index1]<nums2[index2]){
+            nums1[tail]=nums2[index2]
+            index2-=1
+        }else {
+            nums1[tail]=nums1[index1]
+            index1-=1
         }
-        tail--;
+        tail-=1
     }
     while (tail >= 0 && index1 >= 0) {
         nums1[tail] = nums1[index1];
@@ -61,10 +89,10 @@ var merge = function (nums1, m, nums2, n){
         index2--;
         tail--;
     }
-  return nums1
-}
-
+return nums1
+};
 console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));//[ 1, 2, 2, 3, 5, 6 ]
 console.log(merge([1], 1, [2, 5, 6], 3));//[ 1, 2, 5, 6 ]
 console.log(merge([1], 1, [],0));//[ 1 ]
-console.log(merge([2,0], 1, [1],1));//[ 1,2]
+console.log(merge([0], 0, [1],1));//[ 1 ]
+// console.log(merge([2,0], 1, [1],1));//[ 1,2]
