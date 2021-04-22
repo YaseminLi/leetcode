@@ -44,11 +44,11 @@ var strStr = function (haystack, needle) {
 //     }
 //     return -1
 // }
-console.log(strStr('hello', 'll'));
-console.log(strStr('hello', 'ol'));
-console.log(strStr('', ''));
-console.log(strStr("mississippi", "issip"));
-console.log(strStr("aaa", "a"));
+// console.log(strStr('hello', 'll'));
+// console.log(strStr('hello', 'ol'));
+// console.log(strStr('', ''));
+// console.log(strStr("mississippi", "issip"));
+// console.log(strStr("aaa", "a"));
 // var strStr = function (haystack, needle) {
 //     if (needle === '') {
 //         return 0
@@ -147,3 +147,36 @@ console.log(strStr("aaa", "a"));
 //     return start
 // };
 
+var strStr = function (haystack, needle) {
+    if(needle.length===0) return 0
+    let retIndex = -1
+    let i = 0
+    let j = 0
+    while (i < haystack.length && j < needle.length) {
+        if((haystack.length-i-1)<(needle.length-j-1)){
+            return -1
+        }
+        if (haystack[i] !== needle[j]) {
+            if(retIndex===-1){
+i += 1
+            }
+            retIndex = -1
+            j=0
+            
+            continue
+        } else {
+            if(retIndex===-1)retIndex = i
+            
+            i += 1
+            j += 1
+        }
+
+    }
+    return retIndex
+};
+
+console.log(strStr('aaaaa','bba'));
+console.log(strStr('',''));
+console.log(strStr('hello','ll'));
+console.log(strStr('hel00llo','ll'));
+console.log(strStr("mississippi","issip"))
