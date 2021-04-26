@@ -22,6 +22,15 @@ var maxDepth = function(root) {
         return childDepth + 1;
       }
 };
+ // 递归
+ var maxDepth = function(root) {
+  if(!root) return 0
+  const leftDepth=maxDepth(root.left)
+  const rightDepth=maxDepth(root.right)
+  return Math.max(leftDepth,rightDepth)+1
+};
+
+
   
   // BFS广度优先
 //   function maxDepth(root) {
