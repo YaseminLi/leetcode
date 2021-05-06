@@ -54,7 +54,31 @@ var reverse = function (x) {
 //    }
 //    return numReverse
 // };
-// console.log(reverse(123));
-// console.log(reverse(-123));
-// console.log(reverse(120));
+
+
+var reverse = function(x) {
+    const arr=(Math.abs(x)+'').split('')
+    const middle=Math.floor(arr.length/2)
+    for(let i=0,j=arr.length-1;i<middle;i+=1,j-=1){
+        const m=arr[i]
+        arr[i]=arr[j]
+        arr[j]=m
+    }
+    let ret=arr.join('')-0
+    
+    if(x<0){
+        ret=0-ret
+        
+    }
+let max = Math.pow(2, 31)
+    if (ret < (-max) || ret > (max + 1)) {
+        return 0
+    }
+    return ret
+
+};
 console.log(reverse(123));
+console.log(reverse(-123));
+console.log(reverse(120));
+console.log(reverse(123));
+console.log(reverse(900000));

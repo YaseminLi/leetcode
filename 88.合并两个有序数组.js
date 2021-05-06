@@ -91,8 +91,29 @@ var merge = function(nums1, m, nums2, n) {
     }
 return nums1
 };
+
+var merge = function(nums1, m, nums2, n) {
+    let tail=m+n-1
+    let tailM=m-1
+    let tailN=n-1
+    
+    while(tail>=0&&(tailM>=0||tailN>=0)){
+        if(nums1[tailM]>=nums2[tailN]){
+            nums1[tail]=nums1[tailM]
+            tailM--
+        }else if(tailM===-1||nums1[tailM]<nums2[tailN]){
+            nums1[tail]=nums2[tailN]
+             tailN--
+        }
+
+        if(tailN===-1) break
+        tail--
+    }
+
+    return nums1
+    };
 console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));//[ 1, 2, 2, 3, 5, 6 ]
 console.log(merge([1], 1, [2, 5, 6], 3));//[ 1, 2, 5, 6 ]
 console.log(merge([1], 1, [],0));//[ 1 ]
 console.log(merge([0], 0, [1],1));//[ 1 ]
-// console.log(merge([2,0], 1, [1],1));//[ 1,2]
+console.log(merge([2,0], 1, [1],1));//[ 1,2]
