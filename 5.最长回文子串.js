@@ -41,7 +41,50 @@ var longestPalindrome = function (s) {
     }
     return longest
 };
+// console.log(longestPalindrome('babad'));
+// console.log(longestPalindrome('cbba'));
+// console.log(longestPalindrome('aeffdcebfaaf'));
+// console.log(longestPalindrome('ccc'));
+
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+ var longestPalindrome = function(s) {
+     if(s.length===1)return s
+     let longestStr=''
+    for(let i=0.5;i<s.length;i+=0.5){
+        let curStr=''
+        let left='',right=''
+        if(i>Math.floor(i)){
+            //以空隙为对称点
+            left=i-0.5
+            right=i+0.5
+        }else{
+            // 以i为对称点
+            curStr=s[i]
+            left=i-1
+            right=i+1
+        }
+
+        while(left>=0&&right<s.length){
+            if(s[left]===s[right]){
+                curStr=s[left]+curStr+s[right]
+                left--
+                right++
+            }else {
+                break
+            }
+        }
+        longestStr=longestStr.length<curStr.length?curStr:longestStr
+    }
+    return longestStr
+};
+
+
 console.log(longestPalindrome('babad'));
 console.log(longestPalindrome('cbba'));
 console.log(longestPalindrome('aeffdcebfaaf'));
 console.log(longestPalindrome('ccc'));
+console.log(longestPalindrome('a'));
