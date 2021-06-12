@@ -35,3 +35,15 @@ console.log(isPowerOfFour(5));
 console.log(isPowerOfFour(1));
 console.log(isPowerOfFour(0.5));
 console.log(isPowerOfFour(0.25));
+console.log(fio);
+hlkjhdflkgjhjhbjfge
+hjfvgbhegbv
+lkbn
+ehfgiuwehr
+kjhgoeiwher
+ugeugvh
+hjrgbfiegre
+ngerhg
+jdbgkrjhg
+bsdgfjqwrhg
+jklgriuqghrv
