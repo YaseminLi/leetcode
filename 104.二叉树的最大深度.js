@@ -10,6 +10,7 @@
  * @param {TreeNode} root
  * @return {number}
  */
+// 深度优先搜索
 
 // 递归
 var maxDepth = function(root) {
@@ -18,9 +19,3 @@ var maxDepth = function(root) {
    const rightDepth=1+maxDepth(root.right)
    return Math.max(leftDepth,rightDepth)
 };
-
-// 深度优先
-var maxDepth=function (root) {
-  if(!root) return 0
-  
-}
