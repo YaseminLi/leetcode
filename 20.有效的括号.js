@@ -1,120 +1,46 @@
+/*
+ * @lc app=leetcode.cn id=20 lang=javascript
+ *
+ * [20] 有效的括号
+ */
+
+// @lc code=start
 /**
  * @param {string} s
  * @return {boolean}
- *  '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
- * https://leetcode-cn.com/problems/valid-parentheses/
- * 
  */
 
+// 一对括号以一对正负数表示，如（） 用-1 和1表示。 左括号用负数，右括号用正数
+// 负数直接放入
+// 放入正数时，若最后一项不是相应的负数，则先出现了右括号，not valid
+// 若最后一项是相应负数，将最后一推出
 var isValid = function (s) {
-    if (s === '') {
-        return true
+  const map = {
+    "(": -1,
+    ")": 1,
+    "[": -2,
+    "]": 2,
+    "{": -3,
+    "}": 3,
+  };
+
+  const stack = [];
+
+  for (let i = 0; i < s.length; i += 1) {
+    if (map[s[i]] < 0) {
+      stack.push(map[s[i]]);
+    } else if (stack[stack.length - 1] + map[s[i]] === 0) {
+      // 有相应负数，推出最后一项
+      stack.pop();
+    } else {
+      // 没有相应负数
+      return false;
     }
-    if (s.length % 2 === 1) {
-        return false
-    }
-    let map = {
-        // "(": ")", "[":"]", "{": "}"
-        ")": "(", "]": "[", "}": "{"
-    }
-    if (map[s[0]]) {
-        return false
-    }
-    let str = []
-    for (let i = 0; i < s.length; i++) {
-        if (!map[s[i]]) {
-            str.push(s[i])
-        } else {
-            if ((map[s[i]] === str[str.length - 1])) {
-                str.pop()
-            } else {
-                return false
-            }
-        }
-    }
-    return str.length === 0 ? true : false
+  }
+  return stack.length === 0;
 };
+// @lc code=end
 
-//特殊情况：空字符串true 奇数括号false 右括号开头、左括号结尾 false
-// var isValid = function (s) {
-//     if (s === '') {
-//         return true
-//     }
-//     if (s.length % 2 === 1) {
-//         return false
-//     }
-//     let map = {
-//         "(": -3, "[": -2, "{": -1, "}": 1, "]": 2, ")": 3,
-//     }
-//     if (map[s[0]] > 0) {
-//         return false
-//     }
-//     let str = []
-//     for (let i = 0; i < s.length; i++) {
-//         if (map[s[i]] < 0) {
-//             str.push(map[s[i]])
-//         } else {
-//             if ((map[s[i]] + str[str.length-1]) === 0) {
-//                 str.pop()
-//             } else {
-//                 return false
-//             }
-//         }
-//     }
-//     return str.length===0?true:false
-// };
-
-
-// 将每对括号转化成正负相反的数字
-// arr存放暂未匹配的括号
-// 每新push一个数字，若为负数且和末尾数字不配对，返回false;
-var isValid = function (s) {
-    const transToNumber = (s) => {
-        let ret = ''
-        switch (s) {
-            case '(':
-                ret = 1
-                break;
-            case ')':
-                ret = -1
-                break;
-            case '{':
-                ret = 2
-                break;
-            case '}':
-                ret = -2
-                break;
-            case '[':
-                ret = 3
-                break;
-            case ']':
-                ret = -3
-                break;
-            default:
-                break
-        }
-        return ret
-    }
-
-    const arr=[transToNumber(s[0])] //存放暂未匹配的括号
-    for(let i=1;i<s.length;i+=1){
-        const curStr=transToNumber(s[i])
-        if(curStr>0){
-            arr.push(curStr)
-        }else {
-            const curTail=arr[arr.length-1]
-            if(curStr+curTail===0){
-                arr.pop()
-            }else {
-                return false
-            }
-        }
-
-    }
-    return arr.length===0
-};
-console.log(isValid(''));//false
-console.log(isValid("([)]"));//false
-console.log(isValid("{[]}"));//true
-console.log(isValid("()[]{}"));//true
-console.log(isValid("(){}}{"));//false
+console.log(isValid("()"));
+console.log(isValid("()[]{}"));
+console.log(isValid("(]"));

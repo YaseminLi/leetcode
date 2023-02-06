@@ -1,31 +1,34 @@
+/*
+ * @lc app=leetcode.cn id=27 lang=javascript
+ *
+ * [27] 移除元素
+ */
+
+// @lc code=start
 /**
- * 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
-不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
-元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
-示例 1:
-给定 nums = [3,2,2,3], val = 3,
-函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。
-你不需要考虑数组中超出新长度后面的元素。
-链接：https://leetcode-cn.com/problems/remove-element
  * @param {number[]} nums
  * @param {number} val
  * @return {number}
  */
 
- // 数组同283
+// 双指针
+// 指针一 和val不同的最后一个元素的下标 从-1开始
+// 指针二 未遍历的元素下标 从0 开始
+// 指针二 和val不同，指针一后移， 指针一二交换位置，指针二后移
+// 指针二和val相同，指针二后移
 var removeElement = function (nums, val) {
-  let i = 0;//遍历到的元素下标
-  let j = 0;//不等于val的最后一个元素的下标+1
-
-  while (i < nums.length) {
-    if (nums[i] !== val) {
-      nums[j] = nums[i]
-      i++
-      j++
-    } else {
-      i++
+  let xIndex = -1;
+  for (let yIndex = 0; yIndex < nums.length; yIndex += 1) {
+    if (nums[yIndex] !== val) {
+      xIndex += 1;
+      const temp = nums[yIndex];
+      nums[yIndex] = nums[xIndex];
+      nums[xIndex] = temp;
     }
   }
-
-  return j
+  return xIndex + 1;
 };
+// @lc code=end
+
+console.log(removeElement([3, 2, 2, 3], 3)); //2
+console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)); //5
