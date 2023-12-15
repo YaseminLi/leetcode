@@ -29,13 +29,13 @@
 
 对于一个排序数组，可以采用二分法，通过与中间值的比较判断在哪个区域。
 
-- [x][35.search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
+- [x] [35.search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
 
 4. 滑动窗口
 
 涉及到**连续子数组**的问题，根据条件变动左右边界，相当于一个滑块在数组上滑动，直到将数组遍历结束。
 
-- [x][209.长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum/)
+- [x] [209.长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum/)
 
 5. 堆
 
@@ -46,12 +46,15 @@
 
 指针 i 和 j 分别指向数组的第一个元素和最后一个元素，然后指针 i 不断向前， 指针 j 不断递减，直到 i = j
 
-- [container-with-most-water](https://leetcode-cn.com/problems/container-with-most-water/)
-- [reverse-vowels-of-a-string](https://leetcode-cn.com/problems/reverse-vowels-of-a-string/)
-- [valid-palindrome](https://leetcode-cn.com/problems/valid-palindrome/)
-- [two-sum-ii-input-array-is-sorted](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/)
+- [x] [11.container-with-most-water](https://leetcode-cn.com/problems/container-with-most-water/)
+- [x] [345.reverse-vowels-of-a-string](https://leetcode-cn.com/problems/reverse-vowels-of-a-string/)
+- [x] [125.valid-palindrome](https://leetcode-cn.com/problems/valid-palindrome/)
+- [x] [167.two-sum-ii-input-array-is-sorted](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/)
 
 7. 二维数组：矩阵旋转、对角线遍历，以及对子矩阵的操作
+
+8. 哈希表
+- [x] [1.two-sum](https://leetcode.cn/problems/two-sum/description/)
 
 
 待分类
