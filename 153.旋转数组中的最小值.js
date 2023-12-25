@@ -15,29 +15,42 @@
  * @param {number[]} nums
  * @return {number}
  */
-var findMin = function (nums) {
+// var findMin = function (nums) {
 
-  while (nums[0] > nums[nums.length - 1]) {
-    nums.shift()
-  }
+//   while (nums[0] > nums[nums.length - 1]) {
+//     nums.shift()
+//   }
 
-  return nums[0]
+//   return nums[0]
 
-};
+// };
+
+// //二分法
+// var findMin = function (nums) {
+//   let l = 0
+//   let r = nums.length - 1
+//   while (l < r) {
+//     let m = Math.floor((l + r) / 2)
+//     if (nums[m] > nums[r]) {
+//       l = m + 1
+//     } else if (nums[m] < nums[r]) { 
+//       r=m
+//     }
+//   }
+// return nums[r]
+// }
 
 //二分法
+// 找第一个比前面数小的
 var findMin = function (nums) {
-  let l = 0
-  let r = nums.length - 1
-  while (l < r) {
-    let m = Math.floor((l + r) / 2)
-    if (nums[m] > nums[r]) {
-      l = m + 1
-    } else if (nums[m] < nums[r]) { 
-      r=m
+  let left = 0
+  let right = nums.length - 1
+  while (left <= right) {
+    const middle = Math.floor((left + right) / 2)
+    if (nums[middle] > nums[right]) {
+      left = middle + 1
     }
   }
-return nums[r]
 }
 console.log(findMin([4, 5, 6, 7, 0, 1, 2]));
-console.log(findMin([3,1,2]));
+console.log(findMin([3, 1, 2]));
