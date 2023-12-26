@@ -64,3 +64,4 @@ const compare = (nums, idx1, idx2) => {
 // @lc code=end
 console.log(findPeakElement([1, 2, 3, 1]));//2
 // console.log(findPeakElement([1, 2, 1, 3, 5, 6, 4]));//1或5
+
