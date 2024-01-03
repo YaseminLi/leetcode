@@ -18,6 +18,7 @@
  * @return {number}
  */
 
+// @lc code=start
 // 构建一个最大堆
 class MaxHeap {
   constructor(arr) {
@@ -62,7 +63,7 @@ var findKthLargest = function (nums, k) {
 
   return heap.data[0]
 };
-
+// @lc code=end
 console.log(findKthLargest([3,2,3,1,2,4,5,5,6],4));//4
 console.log(findKthLargest([3,2,1,5,6,4],2));//5
 console.log(findKthLargest([2,1],2));//1

@@ -1,24 +1,16 @@
+/*
+ * @lc app=leetcode.cn id=912 lang=javascript
+ *
+ * [912] 排序数组 https://leetcode-cn.com/problems/sort-an-array
+ * 给你一个整数数组 nums，请你将该数组升序排列。
+ */
+
+// @lc code=start
 /**
- * 
- * 给你一个整数数组 nums，请你将该数组升序排列。
-
-示例 1：
-
-输入：nums = [5,2,3,1]
-输出：[1,2,3,5]
-示例 2：
-
-输入：nums = [5,1,1,2,0,0]
-输出：[0,0,1,1,2,5]
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/sort-an-array
  * @param {number[]} nums
  * @return {number[]}
  */
-
-
-// 快速排序
+// 1.快速排序 超时。
 // 确定一个基准数，比基准数小的放在一边，比基准数大的放在另一边，递归处理分区
 
 // 交换两个元素
@@ -38,8 +30,8 @@ const partition = (arr, start, end) => {
       divider += 1
     }
   }
-  swap(arr, pivot, divider-1)
-  return divider-1
+  swap(arr, pivot, divider - 1)
+  return divider - 1
 }
 
 const quickSort = (arr, start, end) => {
@@ -53,6 +45,24 @@ var sortArray = function (nums) {
   return nums
 };
 
-console.log(sortArray([5, 1, 1, 2, 0, 0]));
-console.log(sortArray([5, 2, 3, 1]));
+// 2.插入排序 超时……
+// var sortArray = function (nums) {
+//   let i = 1; // 当前需要排序的数
+//   while (i < nums.length) {
+//     // 往前遍历，找插入位置
+//     let j = i - 1
+//     const cur = nums[i]
+//     while (cur < nums[j] && j >= 0) {
+//       nums[j + 1] = nums[j]
+//       j -= 1
+//     }
+//     nums[j + 1] = cur
+//     i += 1
+//   }
+//   return nums
+// };
+// @lc code=end
+
+console.log(sortArray([5, 1, 1, 2, 0, 0]));//[0,0,1,1,2,5] [1,5,1,2,0,0]
+console.log(sortArray([5, 2, 3, 1]));//[1,2,3,5]
 console.log(sortArray([1]));

@@ -14,42 +14,30 @@
  * @param {number[]} nums
  * @return {number}
  */
+// 二分法，时间NlogN。题目对空间有限制，时间换空间
+// 官方题解：https://leetcode.cn/problems/find-the-duplicate-number/solutions/261119/xun-zhao-zhong-fu-shu-by-leetcode-solution/
+// 查找范围为1-n的数组
+// 当前查找值为mid,计算nums中小于等于mid的数量count；
+//count <=mid left=mid+1 
+// count>mid right=mid-1 
+// 为什么return left？
 var findDuplicate = function (nums) {
-  // nums.sort()
-  // let left = 0
-  // let right = nums.length - 1
-  // while (left < right) {
-  //   const middle = Math.floor((left + right) / 2)
-  //   console.log("findDuplicate ～～～ middle:", middle, middle - 1, nums[middle], nums[middle - 1])
-  //   if (nums[middle] === nums[middle - 1]) {
-  //     return nums[middle]
-  //   } else if ((nums[middle]) === middle) {
-  //     right = middle - 1
-  //   } else if ((nums[middle] - 1) === middle) {
-  //     left = middle + 1
-  //   }
-  // }
-  // return nums[right]
-  const n = nums.length;
-  let l = 1, r = n - 1, ans = -1;
-  while (l <= r) {
-    let mid = (l + r) >> 1;
-    let cnt = 0;
-    for (let i = 0; i < n; ++i) {
-      cnt += nums[i] <= mid;
-    }
-    if (cnt <= mid) {
-      l = mid + 1;
+  let left = 1
+  let right = nums.length - 1
+  while (left <= right) {
+    const middle = Math.floor((left + right) / 2)
+    const count = nums.filter(item => item <= middle)?.length
+    if (count <= middle) {
+      left = middle + 1
     } else {
-      r = mid - 1;
-      ans = mid;
+      right = middle - 1
     }
   }
-  return ans;
+  return left
 };
 // @lc code=end
-// console.log(findDuplicate([1, 3, 4, 2, 2]));//2   1,2,3,4,5,6,6,7,
-// console.log(findDuplicate([3, 1, 3, 4, 2]));//3
-// console.log(findDuplicate([2, 2, 2, 2, 2]));//2
+console.log(findDuplicate([1, 3, 4, 2, 2]));//2   1,2,3,4,5,6,6,7,
+console.log(findDuplicate([3, 1, 3, 4, 2]));//3
+console.log(findDuplicate([2, 2, 2, 2, 2]));//2
 console.log(findDuplicate([1, 4, 4, 2, 4]));//4  1,2,4,4,4
 
